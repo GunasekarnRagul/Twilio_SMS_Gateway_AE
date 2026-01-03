@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Odoo Twilio SMS Gateway | Enterprise Edition (AE)',
+    'name': 'Odoo Twilio SMS Gateway | Advanced Edition (AE)',
     'version': '17.0.1.0.0',
     'license': 'OPL-1',
     'price': 18.0,
