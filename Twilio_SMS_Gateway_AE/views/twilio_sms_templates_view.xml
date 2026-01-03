@@ -1,0 +1,1370 @@
+<odoo>
+ <!-- =======================
+         SMS TEMPLATE
+    ======================== -->
+<record id="view_twilio_sms_template_form" model="ir.ui.view">
+    <field name="name">twilio.sms.template.form</field>
+    <field name="model">twilio.sms.template</field>
+    <field name="arch" type="xml">
+
+        <form string="SMS Templates">
+            <sheet>
+
+                <notebook>
+
+                    <!-- ⭐ 1. OTP / Verification -->
+                    <page string="OTP / Verification">
+ <group>
+    <span class="o_form_label">Standard Login OTP</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_1" style="margin:0;">
+            Your login verification code for {{company_name}} is {{otp}}. Do not share this code.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_1').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone'); 
+                       this.classList.add('fa-check'); 
+                       setTimeout(()=>{ 
+                           this.classList.remove('fa-check'); 
+                           this.classList.add('fa-clone'); 
+                           this.style.color='#4A4A4A'; 
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Account Verification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_2" style="margin:0;">
+            Welcome! Use code {{otp}} to confirm your account creation with {{company_name}}. Code expires in {{expiry_time}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_2').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Password Reset OTP</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_3" style="margin:0;">
+            Your password reset code is {{otp}}. If you did not request this, please ignore this message or contact support immediately.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_3').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Transaction Confirmation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_4" style="margin:0;">
+            To authorize your transaction of {{amount}} at {{company_name}}, enter the code: {{otp}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_4').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">General Verification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_5" style="margin:0;">
+            For security purposes, please enter the following verification code: {{otp}}. Valid for {{expiry_time}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_5').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Mobile Number Change</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_6" style="margin:0;">
+            You are changing your registered mobile number. Confirm with code {{otp}}. Contact us immediately if this was not you.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_6').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Secure Payment OTP</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_7" style="margin:0;">
+            Final step for your payment: Enter {{otp}} to complete the transaction on the {{company_name}} platform.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_7').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Code with Time Limit</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_8" style="margin:0;">
+            {{otp}} is your verification code. It is valid for only {{expiry_time}}. Please use it now.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_8').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Short / Urgent Code</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_9" style="margin:0;">
+            {{company_name}}: {{otp}} is your one-time passcode.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_9').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">App Registration</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_10" style="margin:0;">
+            Thank you for registering! Your activation code for the {{app_name}} app is {{otp}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer; font-size:15px; color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_10').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.remove('fa-clone');
+                       this.classList.add('fa-check');
+                       setTimeout(()=>{
+                           this.classList.remove('fa-check');
+                           this.classList.add('fa-clone');
+                           this.style.color='#4A4A4A';
+                       },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 2. Order / Invoice -->
+                 <page string="Order / Invoice">
+<group>
+    <span class="o_form_label">Order Confirmation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_101" style="margin:0;">
+            🎉 Order #{{order_number}} is confirmed! Total: {{currency_symbol}}{{amount}}. 
+            We'll notify you when it ships. View details: {{order_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_101').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">New Order Received</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_102" style="margin:0;">
+            Thank you for your purchase from {{company_name}}! We received your order #{{order_number}}. 
+            Status updates will follow shortly.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_102').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Order Processing Delay</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_103" style="margin:0;">
+            Update on Order #{{order_number}}: We're experiencing a slight delay in processing, 
+            but your items are expected to ship by {{new_date}}. Thank you for your patience.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_103').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Item Backorder Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_104" style="margin:0;">
+            Important: One item in your Order #{{order_number}} is currently on backorder. 
+            We will ship the remaining items immediately. Details: {{support_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_104').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Order Ready for Pickup</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_105" style="margin:0;">
+            Hi {{customer_name}}, your Order #{{order_number}} is ready for pickup 
+            at our {{store_location}} store. Our hours are {{hours}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_105').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">New Invoice Issued</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_106" style="margin:0;">
+            Your invoice #{{invoice_number}} from {{company_name}} for {{currency_symbol}}{{amount}} 
+            has been issued. Due on {{due_date}}. Pay now: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_106').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Invoice Due Reminder</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_107" style="margin:0;">
+            Friendly Reminder: Invoice #{{invoice_number}} for {{currency_symbol}}{{amount}} 
+            is due on {{due_date}}. Avoid late fees by paying here: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_107').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Payment Successfully Received</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_108" style="margin:0;">
+            Thank you! Your payment of {{currency_symbol}}{{amount}} for Invoice #{{invoice_number}} 
+            has been successfully processed by {{company_name}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_108').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Payment Failure Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_109" style="margin:0;">
+            Attention: Your recent payment for Invoice #{{invoice_number}} failed. 
+            Please update your details and retry payment here: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_109').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Overdue Invoice Final Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_110" style="margin:0;">
+            FINAL NOTICE: Invoice #{{invoice_number}} is overdue. 
+            Please remit {{currency_symbol}}{{amount}} immediately to avoid service interruption: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_110').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 3. Delivery / Shipping -->
+                   <page string="Delivery / Shipping">
+  <group>
+    <span class="o_form_label">Order Shipped Notification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_201" style="margin:0;">
+            Great news! Your order #{{order_number}} has shipped. Track your delivery here: {{tracking_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_201').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Estimated Delivery Date</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_202" style="margin:0;">
+            Update on Order #{{order_number}}: Your package is scheduled for delivery on {{delivery_date}}. 
+            Track updates: {{tracking_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_202').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Out for Delivery</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_203" style="margin:0;">
+            Your package is Out for Delivery Today and expected to arrive between {{start_time}} and {{end_time}}. 
+            Tracking: {{tracking_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_203').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Delivery Successful</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_204" style="margin:0;">
+            Delivered! Your Order #{{order_number}} has arrived safely at your address. Thank you for your business!
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_204').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Delivery Attempt Failed</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_205" style="margin:0;">
+            Delivery attempt failed for Order #{{order_number}} today. 
+            We will attempt redelivery tomorrow. Please contact us to reschedule: {{support_number}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_205').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Delay Notification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_206" style="margin:0;">
+            Shipping Alert: Due to {{reason}}, your delivery for Order #{{order_number}} is delayed. 
+            The new estimated arrival is {{new_delivery_date}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_206').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Ready for Local Pickup</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_207" style="margin:0;">
+            Your order is ready! Pick up Order #{{order_number}} at our {{store_location}} during business hours.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_207').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Proof of Delivery (Digital)</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_208" style="margin:0;">
+            Your delivery proof for Order #{{order_number}} is available here: {{proof_of_delivery_link}}. 
+            Please review and contact us with any issues.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_208').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Carrier Hand-off</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_209" style="margin:0;">
+            Order #{{order_number}} has been handed off to {{local_carrier_name}} for final delivery. 
+            Your new tracking ID is: {{new_tracking_id}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_209').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Custom Delivery Instruction Request</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_210" style="margin:0;">
+            Order #{{order_number}} requires delivery instructions. 
+            Please provide details before {{cut_off_time}} to ensure smooth delivery: {{instruction_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_210').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 4. Appointment -->
+                    <page string="Appointment">
+<group>
+    <span class="o_form_label">Standard Reminder (24h)</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_301" style="margin:0;">
+            Friendly reminder: Your appointment with {{staff_name}} at {{company_name}} is tomorrow, {{date}} at {{time}}. Location: {{address}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_301').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Confirmation Request</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_302" style="margin:0;">
+            Your appointment for {{service}} is booked on {{date}} at {{time}}. Reply YES to confirm or CANCEL to reschedule.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_302').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Booking Success</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_303" style="margin:0;">
+            Success! Your appointment with {{company_name}} is confirmed for {{date}} at {{time}}. Reference ID: {{reference_id}}. View details: {{detail_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_303').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Urgent Same-Day Reminder</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_304" style="margin:0;">
+            Your meeting with {{staff_name}} is in 30 minutes ({{time}}). Please arrive promptly. Contact: {{phone_number}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_304').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Virtual Meeting Link</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_305" style="margin:0;">
+            Reminder: Your virtual meeting is today at {{time}}. Join here: {{meeting_link}}. We look forward to speaking with you.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_305').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Pre-Appointment Instructions</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_306" style="margin:0;">
+            Prepare for your appointment on {{date}}. Please bring photo ID and complete the online intake form here: {{form_link}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_306').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Cancellation Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_307" style="margin:0;">
+            Your appointment with {{staff_name}} on {{date}} has been cancelled. 
+            Please call {{phone_number}} to reschedule or use this link: {{reschedule_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_307').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Rescheduled Confirmation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_308" style="margin:0;">
+            Your appointment has been successfully moved to {{new_date}} at {{new_time}}. Please update your calendar.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_308').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Running Late Notification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_309" style="margin:0;">
+            System Alert: {{staff_name}} is running approximately {{delay_minutes}} mins behind schedule. 
+            We apologize for the inconvenience.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_309').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Follow-Up Booking Prompt</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_310" style="margin:0;">
+            Hi {{client_name}}, it's time for your check-up. 
+            Click here to book your next appointment with {{staff_name}}: {{booking_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_310').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 5. Payment Reminder -->
+                   <page string="Payment Reminder">
+  <group>
+    <span class="o_form_label">Pre-Due Reminder</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_401" style="margin:0;">
+            Friendly reminder: Your payment of {{currency_symbol}}{{amount}} is due on {{due_date}}.
+            View Invoice {{invoice_number}} and pay here: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_401').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Due Today Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_402" style="margin:0;">
+            Action Required: Your payment for Invoice #{{invoice_number}} ({{currency_symbol}}{{amount}}) is due today.
+            Please settle your account now: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_402').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">One-Day Overdue</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_403" style="margin:0;">
+            Overdue Notice: Your payment of {{currency_symbol}}{{amount}} is 1 day overdue.
+            Please pay Invoice {{invoice_number}} immediately to avoid fees: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_403').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Service Interruption Warning</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_404" style="margin:0;">
+            Urgent: Your service may be suspended if Invoice #{{invoice_number}} ({{currency_symbol}}{{amount}})
+            remains unpaid. Due date was {{due_date}}. Pay now: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_404').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Final Demand Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_405" style="margin:0;">
+            FINAL NOTICE: Your account has an outstanding balance of {{currency_symbol}}{{amount}}.
+            Contact {{phone_number}} or pay immediately: {{payment_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_405').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Payment Failed Notification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_406" style="margin:0;">
+            Attention: Your recent payment attempt for Invoice #{{invoice_number}} failed.
+            Please update your payment method via: {{update_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_406').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Installment Reminder</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_407" style="margin:0;">
+            Installment Reminder: Your {{month}} installment of {{currency_symbol}}{{amount}}
+            is due on {{due_date}}. View payment schedule: {{schedule_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_407').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Confirmation of Payment</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_408" style="margin:0;">
+            Payment Received! Thank you. Your payment of {{currency_symbol}}{{amount}} for Invoice #{{invoice_number}}
+            has been successfully processed.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_408').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Contact for Support</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_409" style="margin:0;">
+            Regarding Invoice {{invoice_number}}, if you are experiencing difficulty paying,
+            please call our billing team at {{phone_number}} to discuss options.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_409').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Subscription Renewal Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_410" style="margin:0;">
+            Your {{service_name}} subscription renews on {{renewal_date}} for {{currency_symbol}}{{amount}}.
+            Ensure your payment method is up-to-date: {{update_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_410').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 6. Marketing -->
+                    <page string="Marketing">
+  <group>
+    <span class="o_form_label">Flash Sale Alert</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_501" style="margin:0;">
+            🔥 Flash Sale Alert! Get {{discount}}% OFF site-wide for the next 48 hours.
+            Use code FLASH{{discount}}. Shop now: {{url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_501').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">New Product Launch</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_502" style="margin:0;">
+            Just launched! Meet our new {{product_name}} collection. Be the first to try it.
+            Exclusive access here: {{product_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_502').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Abandoned Cart Recovery</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_503" style="margin:0;">
+            Hi {{customer_name}}, did you forget something? Your cart items are waiting!
+            Complete your order now and save 10%: {{cart_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_503').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Loyalty / VIP Offer</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_504" style="margin:0;">
+            As a valued VIP member, enjoy an exclusive {{discount}}% off your next purchase.
+            Valid until {{expiry_date}}. Shop: {{url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_504').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Limited Time Free Shipping</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_505" style="margin:0;">
+            Last chance for free shipping! All orders over {{min_amount}} ship free until midnight.
+            Use code SHIPFREE. Visit: {{url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_505').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Referral Program Prompt</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_506" style="margin:0;">
+            Love our service? Refer a friend and you both get {{reward_amount}} credit!
+            Share your unique link: {{referral_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_506').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Win-Back / Re-engagement</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_507" style="margin:0;">
+            We miss you, {{customer_name}}! Here's 15% off to welcome you back.
+            Use code WELCOMEBACK at checkout: {{url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_507').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Content / Webinar Promotion</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_508" style="margin:0;">
+            New Webinar: Learn about {{topic}} with our experts on {{date}} at {{time}}.
+            Secure your free spot: {{webinar_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_508').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Event Invitation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_509" style="margin:0;">
+            You're invited! Join {{company_name}} for our {{event_name}} event on {{date}}.
+            RSVP now to save your seat: {{rsvp_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_509').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Feedback Request</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_510" style="margin:0;">
+            Hi {{customer_name}}, your opinion matters! Take 2 minutes to share your feedback
+            on our new {{product_name}}: {{survey_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_510').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 7. Support -->
+                   <page string="Support / Ticket">
+ <group>
+    <span class="o_form_label">New Ticket Confirmation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_601" style="margin:0;">
+            Your support ticket #{{ticket_number}} has been successfully created with {{company_name}}.
+            We aim to respond within {{response_time}}. Track status: {{ticket_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_601').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Agent Assigned</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_602" style="margin:0;">
+            Ticket #{{ticket_number}} has been assigned to {{agent_name}}.
+            They will contact you shortly regarding your issue. Reference: {{ticket_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_602').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Ticket Update / Requires Input</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_603" style="margin:0;">
+            Update on Ticket #{{ticket_number}}: We need more information to proceed.
+            Please review our latest comment here: {{ticket_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_603').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Issue Escalated</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_604" style="margin:0;">
+            Ticket #{{ticket_number}} has been escalated to our specialist team for urgent review.
+            We appreciate your patience. Status: {{ticket_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_604').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Temporary Fix Implemented</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_605" style="margin:0;">
+            A temporary fix has been applied to resolve your issue (#{{ticket_number}}).
+            A permanent solution will be deployed by {{date}}. Thank you.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_605').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Ticket Resolved / Closed</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_606" style="margin:0;">
+            Good news! Your issue (Ticket #{{ticket_number}}) has been resolved and the ticket is now closed.
+            Thank you for using {{company_name}} Support.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_606').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Feedback Request</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_607" style="margin:0;">
+            We value your feedback on Ticket #{{ticket_number}}.
+            Please take 30 seconds to rate your support experience here: {{feedback_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_607').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Preventing Auto-Closure</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_608" style="margin:0;">
+            Ticket #{{ticket_number}} will automatically close in 48 hours.
+            Reply YES or click {{ticket_url}} if the issue is not resolved.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_608').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Welcome to Chat/Call</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_609" style="margin:0;">
+            Your agent is ready! Please join our live chat/call now regarding Ticket #{{ticket_number}}:
+            {{chat_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_609').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Technical Outage Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_610" style="margin:0;">
+            System Alert: We are aware of the issue affecting {{service_name}}
+            (related to your ticket #{{ticket_number}}). We are working to restore service ASAP.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_610').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 8. HR -->
+                   <page string="HR / Employee">
+<group>
+    <span class="o_form_label">Leave Approval</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_701" style="margin:0;">
+            Your leave request for {{date_range}} has been APPROVED.
+            We wish you a restful time off. - {{company_name}} HR
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_701').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Leave Rejection</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_702" style="margin:0;">
+            Your leave request for {{date_range}} has been REJECTED due to {{reason}}.
+            Please contact HR for further discussion.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_702').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Salary Credit Notification</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_703" style="margin:0;">
+            Your salary for {{month}} has been credited to your account.
+            Your payslip is available on the {{portal_name}} portal.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_703').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Payslip Ready</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_704" style="margin:0;">
+            Hi {{employee_name}}, your payslip for {{month}} is now ready to view.
+            Log in to the HR portal: {{portal_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_704').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Attendance Missing</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_705" style="margin:0;">
+            URGENT: Your attendance record for {{date}} is missing.
+            Please mark your clock-in/out immediately or contact your manager.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_705').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Internal Event Reminder</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_706" style="margin:0;">
+            Reminder: The mandatory {{event_name}} session is tomorrow at {{time}} in {{location}}.
+            Attendance is required.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_706').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Policy Update</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_707" style="margin:0;">
+            Important: The {{policy_name}} policy has been updated.
+            Review the changes on the internal knowledge base: {{document_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_707').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">New Employee Welcome</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_708" style="margin:0;">
+            Welcome to the {{company_name}} team, {{new_employee_name}}!
+            Your onboarding schedule begins {{start_date}} at {{time}}.
+            We are excited to have you!
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_708').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Performance Review Schedule</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_709" style="margin:0;">
+            Your annual Performance Review with {{manager_name}} is scheduled for {{date}} at {{time}}.
+            Prepare your self-assessment beforehand.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_709').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">HR Query Follow-Up</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_710" style="margin:0;">
+            Regarding your HR query:
+            The matter is under review by {{hr_specialist}}.
+            We expect a full resolution within {{days}} business days.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_710').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                    <!-- ⭐ 9. General -->
+                   <page string="General / Custom">
+<group>
+    <span class="o_form_label">Standard Custom Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_801" style="margin:0;">
+            {{company_name}} Notification: {{message}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_801').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Important Alert</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_802" style="margin:0;">
+            IMPORTANT: {{message}} Please review your account now: {{link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_802').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Internal Staff Alert</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_803" style="margin:0;">
+            Staff Alert: {{message}}. Check email immediately for full details. Do not reply to this number.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_803').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">URL / Link Delivery</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_804" style="margin:0;">
+            Here is the document link you requested: {{url}}. Questions? Call us at {{phone_number}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_804').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">General Follow-Up</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_805" style="margin:0;">
+            Following up on our conversation on {{date}}. {{message}} We look forward to hearing from you soon.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_805').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Document Access</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_806" style="margin:0;">
+            Your document, {{document_name}}, is ready. Access it securely here: {{document_url}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_806').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Subscription Status Update</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_807" style="margin:0;">
+            Your {{subscription_type}} subscription has been updated. {{message}} See details: {{profile_link}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_807').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Office Hours / Holiday Notice</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_808" style="margin:0;">
+            Please note: {{company_name}} will be closed on {{date}} for the holiday. {{message}}
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_808').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Quick Inquiry</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_809" style="margin:0;">
+            Hi {{recipient_name}}, {{message}} Please reply to confirm or call us at {{phone_number}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_809').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+
+    <span class="o_form_label">Service Activation</span>
+    <div style="display:flex; align-items:center; gap:10px;">
+        <p id="msg_810" style="margin:0;">
+            Your service is now Active! {{message}} Thank you for choosing {{company_name}}.
+        </p>
+        <span class="fa fa-clone" style="cursor:pointer;font-size:15px;color:#4A4A4A;" title="Copy"
+              onclick="navigator.clipboard.writeText(document.getElementById('msg_810').innerText);
+                       this.style.color='#2ECC71';
+                       this.classList.replace('fa-clone','fa-check');
+                       setTimeout(()=>{ this.classList.replace('fa-check','fa-clone'); this.style.color='#4A4A4A'; },1200);">
+        </span>
+    </div>
+</group>
+</page>
+
+
+                </notebook>
+
+            </sheet>
+        </form>
+
+    </field>
+</record>
+
+
+<record id="action_twilio_sms_template" model="ir.actions.act_window">
+    <field name="name">SMS Templates</field>
+    <field name="res_model">twilio.sms.template</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="view_twilio_sms_template_form"/>
+</record>
+
+
+
+
+</odoo>

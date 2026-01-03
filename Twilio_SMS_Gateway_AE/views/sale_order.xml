@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ========================================= -->
+    <!-- SALES ORDER SMS CONFIGURATION VIEWS -->
+    <!-- ========================================= -->
+
+    <!-- Form View for SMS Configuration -->
+    <record id="view_sale_order_sms_config_form" model="ir.ui.view">
+        <field name="name">sale.order.sms.config.form</field>
+        <field name="model">sale.order.sms.config</field>
+        <field name="arch" type="xml">
+            <form string="Sales Order SMS Configuration">
+                <sheet>
+                    <!-- <widget name="web_ribbon" title="Active" bg_color="bg-success" invisible="not is_active"/>
+                    <widget name="web_ribbon" title="Inactive" bg_color="bg-danger" invisible="is_active"/> -->
+                    
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Configuration Name" readonly="1"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group name="settings">
+                            <field name="is_active" widget="boolean_toggle" string="Enable Auto SMS"/>
+                        </group>
+                        <!-- <group name="statistics">
+                            <field name="total_sent" readonly="1"/>
+                            <field name="total_failed" readonly="1"/>
+                        </group> -->
+                    </group>
+                    
+                    <notebook>
+                        <page string="SMS Template" name="template">
+                            <field name="message_template" 
+                                   widget="text" 
+                                   placeholder="Enter your SMS template here. Use placeholders like {partner_name}, {order_name}, {amount_total}..."
+                                   nolabel="1"
+                                   style="min-height: 150px;"/>
+                            
+                            <div string="Available Placeholders" class="mt-3">
+                                <div class="alert alert-info" role="alert">
+                                    <strong>You can use these placeholders in your template:</strong>
+                                    <ul class="mb-0 mt-2">
+                                        <li><code>{partner_name}</code> - Customer name</li>
+                                        <li><code>{order_name}</code> - Order number (e.g., SO001)</li>
+                                        <li><code>{amount_total}</code> - Total amount</li>
+                                        <li><code>{date_order}</code> - Order date</li>
+                                        <li><code>{user_name}</code> - Salesperson name</li>
+                                        <li><code>{company_name}</code> - Company name</li>
+                                        <li><code>{order_state}</code> - Order status</li>
+                                        <li><code>{product_names}</code> - Product names</li>
+                                        <li><code>{currency}</code> - Currency symbol</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </page>
+                        
+                        <page string="Preview" name="preview">
+                            <field name="preview_message" 
+                                   widget="text" 
+                                   nolabel="1"
+                                   readonly="1"
+                                   placeholder="Configure template to see preview..."
+                                   style="min-height: 100px; background-color: #f8f9fa; padding: 10px; border-radius: 5px;"/>
+                            
+                            <div class="alert alert-warning mt-3" role="alert">
+                                <strong>Note:</strong> This is a preview with sample data. Actual SMS will use real order information.
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for SMS Configuration -->
+    <record id="view_sale_order_sms_config_tree" model="ir.ui.view">
+        <field name="name">sale.order.sms.config.tree</field>
+        <field name="model">sale.order.sms.config</field>
+        <field name="arch" type="xml">
+            <list string="Sales Order SMS Configurations" 
+                  decoration-success="is_active == True"
+                  decoration-muted="is_active == False">
+                <field name="name"/>
+                <field name="is_active" widget="boolean_toggle"/>
+                <field name="total_sent"/>
+                <field name="total_failed"/>
+                <field name="write_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Action for SMS Configuration -->
+   <record id="action_sale_order_sms_config_server" model="ir.actions.server">
+    <field name="name">Sales Order SMS</field>
+    <field name="model_id" ref="model_sale_order_sms_config"/>
+    <field name="state">code</field>
+    <field name="code">
+action = env['sale.order.sms.config'].action_open_sms_config()
+    </field>
+</record>
+
+
+    <!-- ========================================= -->
+    <!-- SALES ORDER INHERITED VIEWS -->
+    <!-- ========================================= -->
+
+    <!-- Inherit Sale Order Form View -->
+    <record id="view_order_form_inherit_sms" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.sms</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            
+            <!-- Add SMS button in header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_send_sms_manually" 
+                        string="Send SMS" 
+                        type="object" 
+                        class="btn-secondary"
+                        invisible="state not in ['sale', 'done'] or not partner_id"
+                        icon="fa-mobile"/>
+            </xpath>
+            
+            <!-- Add SMS stats button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" 
+                        type="object" 
+                        name="action_view_sms_logs" 
+                        icon="fa-comments"
+                        invisible="sms_log_count == 0">
+                    <field name="sms_log_count" widget="statinfo" string="SMS Logs"/>
+                </button>
+            </xpath>
+            
+            <!-- Add SMS status field -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="sms_sent" invisible="1"/>
+            </xpath>
+            
+        </field>
+    </record>
+
+    <!-- Inherit Sale Order Tree View -->
+    <record id="view_order_tree_inherit_sms" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit.sms</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <field name="sms_sent" optional="show" widget="boolean"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========================================= -->
+    <!-- SMS LOGS FOR SALES ORDERS -->
+    <!-- ========================================= -->
+
+    <!-- SMS Log Tree View (Enhanced for Sales Orders) -->
+    <!-- <record id="view_sms_log_sale_order_tree" model="ir.ui.view">
+        <field name="name">sms.log.sale.order.tree</field>
+        <field name="model">sms.log</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Order SMS History" 
+                  create="0" 
+                  edit="0" 
+                  delete="1"
+                  decoration-danger="status=='failed'" 
+                  decoration-success="status=='sent'">
+                
+                <field name="create_date" string="Date &amp; Time"/>
+                <field name="sale_order_id" optional="show"/>
+                <field name="to_number"/>
+                <field name="message_body" optional="show"/>
+                <field name="status" widget="badge" decoration-success="status == 'sent'" decoration-danger="status == 'failed'"/>
+                <field name="api_response" optional="hide"/>
+            </tree>
+        </field>
+    </record> -->
+
+    <!-- SMS Log Form View -->
+    <!-- <record id="view_sms_log_sale_order_form" model="ir.ui.view">
+        <field name="name">sms.log.sale.order.form</field>
+        <field name="model">sms.log</field>
+        <field name="arch" type="xml">
+            <form string="SMS Log Details" create="0" edit="0">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="to_number"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="create_date" string="Sent At"/>
+                            <field name="status" widget="badge"/>
+                            <field name="source_model"/>
+                        </group>
+                        <group>
+                            <field name="sale_order_id" invisible="not sale_order_id"/>
+                        </group>
+                    </group>
+                    <group string="Message">
+                        <field name="message_body" nolabel="1"/>
+                    </group>
+                    <group string="API Response">
+                        <field name="api_response" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- SMS Log Search View -->
+    <record id="view_sms_log_sale_order_search" model="ir.ui.view">
+        <field name="name">sms.log.sale.order.search</field>
+        <field name="model">sms.log</field>
+        <field name="arch" type="xml">
+            <search string="Search SMS Logs">
+                <field name="to_number"/>
+                <field name="sale_order_id"/>
+                <field name="message_body"/>
+                <field name="status"/>
+                <filter string="Sent" name="filter_sent" domain="[('status', '=', 'sent')]"/>
+                <filter string="Failed" name="filter_failed" domain="[('status', '=', 'failed')]"/>
+                <filter string="Sales Orders" name="filter_sale_orders" domain="[('source_model', '=', 'sale.order')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                    <filter string="Sales Order" name="group_sale_order" context="{'group_by': 'sale_order_id'}"/>
+                    <filter string="Date" name="group_date" context="{'group_by': 'create_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action for SMS Logs (Sales Order Context) -->
+    <record id="action_sms_log_sale_orders" model="ir.actions.act_window">
+        <field name="name">Sales Order SMS Logs</field>
+        <field name="res_model">sms.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('source_model', '=', 'sale.order')]</field>
+        <field name="context">{'default_source_model': 'sale.order'}</field>
+        <field name="search_view_id" ref="view_sms_log_sale_order_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No SMS logs found for Sales Orders.
+            </p>
+            <p>
+                SMS sent from sales order confirmations will appear here automatically.
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>
