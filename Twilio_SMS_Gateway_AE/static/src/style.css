@@ -1,0 +1,20 @@
+/* Target the menu brand */
+.o_menu_brand[data-menu-xmlid="Twilio_SMS_Gateway_AE.menu_twilio_root"] {
+    font-size: 0 !important;       /* Hides the text "Twilio SMS" */
+    display: flex !important;      /* Keeps layout stable */
+    align-items: center;           /* Centers the icon vertically */
+}
+
+/* Add the icon */
+.o_menu_brand[data-menu-xmlid="Twilio_SMS_Gateway_AE.menu_twilio_root"]::before {
+    content: "";
+    display: inline-block;
+    width: 90px;                   /* Adjust width to fit your logo */
+    height: 91px;                  /* Adjust height to fit top bar */
+    background-image: url('/Twilio_SMS_Gateway_AE/static/img/twilio_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+   margin-right: 10px;
+    margin-left: 5px;              /* No margin needed since text is hidden */
+}

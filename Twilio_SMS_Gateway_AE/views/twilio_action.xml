@@ -1,0 +1,10 @@
+<odoo>
+    <record id="action_twilio_config_server" model="ir.actions.server">
+        <field name="name">Twilio Connection</field>
+        <field name="model_id" ref="model_twilio_config"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_open_settings()
+        </field>
+    </record>
+</odoo>

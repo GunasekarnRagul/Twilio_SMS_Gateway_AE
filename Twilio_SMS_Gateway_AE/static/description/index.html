@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio SMS Gateway for Odoo</title>
+
+  
+</head>
+
+<body>
+
+    <div style="margin: 0; color: #374151; line-height: 1.6; font-family:'Segoe UI', Roboto, sans-serif">
+        <div style="padding: 2rem 1rem;">
+
+            <div class="row text-center">
+                <div class="col-12">
+                    <div style="margin-bottom: 1rem; text-align: center;">
+                        <span
+                            style="display: inline-block; padding: 6px 16px; border-radius: 50px; color: #ffffff !important; font-size: 14px; font-weight: bold; line-height: 1; text-transform: none; background-color: #714B67; background-image: linear-gradient(90deg, #714B67 0%, #F22F46 100%);">
+                            odoo + Twilio
+                        </span>
+                    </div>
+
+                    <h1
+                        style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem; text-align: center; color: #374151;">
+                        <span style="color: #F22F46 !important;">Twilio SMS Gateway</span> for <span
+                            style="color: #714B67 !important;">Odoo</span>
+                    </h1>
+                    <h5
+                        style="font-size: 2rem;text-align: center; font-weight: 700; color: #374151; margin-bottom: 1rem;">
+                        SMS Marketing <span style="color: #6c757d; margin: 0 8px;">|</span>
+                        Bulk SMS 
+                        
+                    </h5>
+                    <p
+                        style="color: #6b7280; font-size: 1.2rem; max-width: 800px; margin: 1.5rem auto 1.5rem; line-height: 1.6;">
+                        A powerful Twilio SMS integration for Odoo enabling bulk SMS with
+                        Excel
+                        import, single SMS operations, template management, SMS groups, and advanced multi-level log
+                        tracking.
+                    </p>
+
+                    <div
+                        style="width: 50px; height: 4px; margin: 20px auto; background-color: #714B67; background-image: linear-gradient(90deg, #714B67, #F22F46); display: block; border-bottom: 4px solid #F22F46;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; display: table; border-spacing: 15px 0; margin-bottom: 3rem; text-align: center;">
+            <div style="display: table-row;">
+
+                <div style="display: table-cell; width: 20%; vertical-align: top;">
+                    <div
+                        style="padding: 21px; border: 1px solid #e5e7eb; border-bottom: 4px solid #714B67; border-radius: 16px; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); height: 16rem;">
+                        <div
+                            style="width: 80px; height: 80px; margin: 0 auto 20px; background-color: rgba(113, 75, 103, 0.1); border-radius: 20px; display: table;">
+                            <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                <img src="icon_single.png" style="width: 36px; height: 36px; display: inline-block;"
+                                    alt="Single SMS">
+                            </div>
+                        </div>
+                        <h5
+                            style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: #714B67 !important;">
+                            Single SMS</h5>
+                        <p style="font-size: 0.95rem; color: #6c757d; line-height: 1.5; margin: 0;">Send individual
+                            messages instantly with real-time API responses.</p>
+                    </div>
+                </div>
+
+                <div style="display: table-cell; width: 20%; vertical-align: top;">
+                    <div
+                        style="padding: 21px; border: 1px solid #e5e7eb; border-bottom: 4px solid #F22F46; border-radius: 16px; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); height: 16rem;">
+                        <div
+                            style="width: 80px; height: 80px; margin: 0 auto 20px; background-color: rgba(242, 47, 70, 0.1); border-radius: 20px; display: table;">
+                            <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                <img src="multiple_sms.png" style="width: 36px; height: 36px; display: inline-block;"
+                                    alt="Bulk SMS">
+                            </div>
+                        </div>
+                        <h5
+                            style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: #F22F46 !important;">
+                            Multiple SMS</h5>
+                        <p style="font-size: 0.95rem; color: #6c757d; line-height: 1.5; margin: 0;">Import Excel files
+                            to send to thousands with delivery tracking.</p>
+                    </div>
+                </div>
+
+                <div style="display: table-cell; width: 20%; vertical-align: top;">
+                    <div
+                        style="padding: 21px; border: 1px solid #e5e7eb; border-bottom: 4px solid #00A09D; border-radius: 16px; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); height: 16rem;">
+                        <div
+                            style="width: 80px; height: 80px; margin: 0 auto 20px; background-color: rgba(0, 160, 157, 0.1); border-radius: 20px; display: table;">
+                            <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                <img src="schedule.png" style="width: 36px; height: 36px; display: inline-block;"
+                                    alt="Scheduling">
+                            </div>
+                        </div>
+                        <h5
+                            style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: #00A09D !important;">
+                            Smart Scheduling</h5>
+                        <p style="font-size: 0.95rem; color: #6c757d; line-height: 1.5; margin: 0;">Schedule SMS
+                            campaigns in advance for time-zone targeting.</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div style="width: 100%; margin: 40px auto; padding: 0 10px; font-family:'Segoe UI', Roboto, sans-serif">
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-size: 3rem; font-weight: 700; color: #374151; margin: 4rem 0;">Why Choose Our SMS
+                    Module?
+                </h3>
+            </div>
+
+            <div style="width: 100%; display: table; border-spacing: 10px 0; text-align: center;">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 25%; vertical-align: middle; padding-bottom: 20px;">
+                        <h2 style="font-size: 3rem; font-weight: 700; color: #714B67 !important; margin: 0;">6+</h2>
+                        <p
+                            style="font-size: 1rem; font-weight: 700; color: #6c757d !important; text-transform: uppercase; letter-spacing: 1px; margin: 5px 0 0 0;">
+                            Powerful Features</p>
+                    </div>
+
+                    <div style="display: table-cell; width: 25%; vertical-align: middle; padding-bottom: 20px;">
+                        <h2 style="font-size: 3rem; font-weight: 700; color: #00A09D !important; margin: 0;">100%</h2>
+                        <p
+                            style="font-size: 1rem; font-weight: 700; color: #6c757d !important; text-transform: uppercase; letter-spacing: 1px; margin: 5px 0 0 0;">
+                            Odoo Integration</p>
+                    </div>
+
+                    <div style="display: table-cell; width: 25%; vertical-align: middle; padding-bottom: 20px;">
+                        <h2 style="font-size: 3rem; font-weight: 700; color: #F22F46 !important; margin: 0;">∞</h2>
+                        <p
+                            style="font-size: 1rem; font-weight: 700; color: #6c757d !important; text-transform: uppercase; letter-spacing: 1px; margin: 5px 0 0 0;">
+                            SMS Capacity</p>
+                    </div>
+
+                    <div style="display: table-cell; width: 25%; vertical-align: middle; padding-bottom: 20px;">
+                        <h2 style="font-size: 3rem; font-weight: 700; color: #198754 !important; margin: 0;">24/7</h2>
+                        <p
+                            style="font-size: 1rem; font-weight: 700; color: #6c757d !important; text-transform: uppercase; letter-spacing: 1px; margin: 5px 0 0 0;">
+                            Automated Sending</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                style="width: 60px; height: 4px; background-color: #714B67; background-image: linear-gradient(90deg, #714B67, #F22F46); margin: 20px auto; border-radius: 2px;">
+            </div>
+        </div>
+        <div
+            style="margin-top: 5rem;font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; color: #374151; line-height: 1.6;">
+            <div
+                style="display: table; width: 100%; border-spacing: 20px 0; margin-bottom: 3rem; font-family: 'Segoe UI', Roboto, sans-serif;">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 50%; vertical-align: top;">
+                        <h3 style="color: #714B67; font-weight: 700; font-size: 2.0rem; margin-bottom: 15px;">
+                            <img src="connection.png" style="width: 3rem; vertical-align: middle; margin-right: 8px;"
+                                alt="Logo">
+                            Twilio SMS Gateway Integration
+                        </h3>
+                        <p style="color: #374151; line-height: 1.6; margin-bottom: 20px;font-size: 1.4rem;">Seamless
+                            integration with
+                            Twilio SMS Gateway for reliable message delivery.</p>
+
+                        <ul style="list-style: none; padding-left: 0; margin-bottom: 25px;">
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Easy Twilio
+                                account connection</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Real-time
+                                connection verification</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Live balance
+                                tracking (USD) & Bill monitoring</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Twilio
+                                number management & Account SID</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Last
+                                verified timestamp with Reset options</li>
+                        </ul>
+
+                        <div
+                            style="background-color: #f8f9fa; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; font-family:'Segoe UI', Roboto, sans-serif">
+                            <h6
+                                style="font-weight: 700; color: #111827 !important; font-size: 18px; margin-bottom: 20px; margin-top: 0;">
+                                📊 Live Dashboard Shows:
+                            </h6>
+
+                            <div style="margin: 0; padding: 0;">
+
+                                <div
+                                    style="display: block; padding-left: 16px; border-left-width: 3px; border-left-style: solid; border-left-color: #00A09D; margin-bottom: 12px; font-size: 15px; color: #4b5563 !important; line-height: 1.5;">
+
+                                    <strong style="color: #111827 !important; font-weight: 700;">Account Name:</strong>
+                                    Your Twilio account identifier
+                                </div>
+
+                                <div
+                                    style="display: block; padding-left: 16px; border-left-width: 3px; border-left-style: solid; border-left-color: #00A09D; margin-bottom: 12px; font-size: 15px; color: #4b5563 !important; line-height: 1.5;">
+
+                                    <strong style="color: #111827 !important; font-weight: 700;">Account Type:</strong>
+                                    Trial or Production status
+                                </div>
+
+                                <div
+                                    style="display: block; padding-left: 16px; border-left-width: 3px; border-left-style: solid; border-left-color: #00A09D; margin-bottom: 12px; font-size: 15px; color: #4b5563 !important; line-height: 1.5;">
+
+                                    <strong style="color: #111827 !important; font-weight: 700;">Balance:</strong>
+                                    Real-time credit balance
+                                </div>
+
+                                <div
+                                    style="display: block; padding-left: 16px; border-left-width: 3px; border-left-style: solid; border-left-color: #00A09D; margin-bottom: 0; font-size: 15px; color: #4b5563 !important; line-height: 1.5;">
+
+                                    <strong style="color: #111827 !important; font-weight: 700;">Messages Sent
+                                        Today:</strong>
+                                    Daily counter
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle;">
+
+                        <div
+                            style="padding:10px; border-radius:16px; background-color:#ffffff; text-align:center; border:1px solid #e5e7eb">
+
+
+                            <!-- METHOD 1: Using background-image (Most Odoo-compatible) -->
+                            <a href="https://www.youtube.com/watch?v=jhfMpwNPWFw" target="_blank"
+                                rel="noopener noreferrer" style="display: block; text-decoration: none;">
+                                <div
+                                    style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); background-image: url('https://img.youtube.com/vi/jhfMpwNPWFw/maxresdefault.jpg'); background-size: cover; background-position: center; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+
+                                    <!-- Overlay gradient -->
+                                    <div
+                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 16px;">
+                                    </div>
+                                </div>
+                            </a>
+
+                            <p
+                                style="text-align: center; margin-top: 16px; font-size: 1rem; color: #6b7280; font-weight: 600;">
+                                ▶ Click to watch: Twilio SMS Gateway Integration Demo
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                style="width: 100%; display: table; border-spacing: 20px 0; margin-bottom: 3rem; font-family: 'Segoe UI', Roboto, sans-serif;">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle;">
+                        <div
+                            style="padding: 10px; border-radius: 16px;background-color:#ffffff; text-align:center; border-radius:16px; border:1px solid #e5e7eb; text-align: center;">
+                            <a href="https://www.youtube.com/watch?v=FskYppi2hiA" target="_blank"
+                                style="text-decoration: none; display: block;">
+                                <img src="https://img.youtube.com/vi/FskYppi2hiA/maxresdefault.jpg"
+                                    style="width: 100%; border-radius: 12px; display: block;"
+                                    alt="Watch Single SMS Demo">
+
+                                <div style="margin-top: -140px; margin-bottom: 80px; display: table; width: 100%;">
+                                    <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                        <div
+                                            style="width: 70px; height: 70px; margin: 0 auto; background-color: #ff0000; border-radius: 50%; display: table;">
+                                            <div
+                                                style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 5px;">
+                                                <div
+                                                    style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin: 0 auto;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <p
+                                style="text-align: center; margin-top: 16px; font-size: 1rem; color: #6b7280; font-weight: 600;">
+                                ▶ Click to watch: Single SMS Demo
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle; padding-left: 20px;">
+                        <h3 style="color: #714B67 !important; font-weight: 700; font-size: 2rem; margin-bottom: 15px;">
+                            <span><img src="icon_single.png" style="width: 3rem; display: inline-block;"
+                                    alt="Single SMS"></span> Single SMS
+                        </h3>
+                        <p style="color: #374151; line-height: 1.6; margin-bottom: 20px; font-size: 1.4rem;">
+                            Send individual SMS messages to customers instantly with a simple and intuitive interface.
+                        </p>
+
+                        <ul style="list-style: none; padding-left: 0; margin-bottom: 0;">
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Direct phone
+                                number input</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Custom
+                                message composition</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Instant
+                                delivery confirmation</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Real-time
+                                API response</li>
+                            <li style="margin-bottom: 8px; color: #4b5563; font-size: 1.2rem;"><span
+                                    style="color: #00A09D; font-weight: bold; margin-right: 10px;">✔</span> Individual
+                                message tracking</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                style="width: 100%; display: table; border-spacing: 20px 0; margin-bottom: 3rem; font-family:'Segoe UI', Roboto, sans-serif">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 50%; vertical-align: top;">
+                        <h3
+                            style="color: #F22F46 !important; font-weight: 700; font-size: 2rem; margin-bottom: 15px; margin-top: 0;">
+                            <span><img src="multiple_sms.png" style="width:3rem; display:inline-block"
+                                    alt="Bulk SMS"></span> Multiple SMS (Bulk Messaging)
+                        </h3>
+                        <p style="color: #374151; line-height: 1.6; margin-bottom: 15px; font-size: 1.4rem;">
+                            Import and send SMS to hundreds or thousands of recipients simultaneously.
+                        </p>
+
+                        <div style="margin: 0 0 25px 0; padding: 0;">
+                            <div
+                                style="padding-left: 16px; border-left-width:3px; border-left-style:solid; border-left-color:#00A09D; margin-bottom: 8px; font-size: 1.2rem; color: #6c757d !important;">
+                                Excel file import (.xlsx, .xls)
+                            </div>
+                            <div
+                                style="padding-left: 16px; border-left-width:3px; border-left-style:solid; border-left-color:#00A09D; margin-bottom: 8px; font-size: 1.2rem; color: #6c757d !important;">
+                                Easy number import from spreadsheets
+                            </div>
+                            <div
+                                style="padding-left: 16px; border-left-width:3px; border-left-style:solid; border-left-color:#00A09D; margin-bottom: 8px; font-size: 1.2rem; color: #6c757d !important;">
+                                Bulk message sending
+                            </div>
+                            <div
+                                style="padding-left: 16px; border-left-width:3px; border-left-style:solid; border-left-color:#00A09D; margin-bottom: 8px; font-size: 1.2rem; color: #6c757d !important;">
+                                Real-time progress tracking
+                            </div>
+                            <div
+                                style="padding-left: 16px; border-left-width:3px; border-left-style:solid; border-left-color:#00A09D; margin-bottom: 0; font-size: 1.2rem; color: #6c757d !important;">
+                                Batch processing support
+                            </div>
+                        </div>
+
+                        <div
+                            style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #F22F46; border-top: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6;">
+                            <h6
+                                style="font-weight: 700; color: #F22F46 !important; font-size: 18px; margin-bottom: 15px; margin-top: 0;">
+                                📋 Three-Way Delivery Tracking</h6>
+
+                            <div style="margin-bottom: 12px;">
+                                <strong style="display: block; color: #212529; font-size: 16px;">1. Delivery
+                                    Log</strong>
+                                <span style="     margin-left: 1rem;
+font-size: 14px; color: #6c757d;">Complete record of all sent messages with
+                                    timestamps and status.</span>
+                            </div>
+
+                            <div style="margin-bottom: 12px;">
+                                <strong style="display: block; color: #198754; font-size: 16px;">2. Delivery Success
+                                    Log</strong>
+                                <span style="     margin-left: 1rem;
+font-size: 14px; color: #6c757d;">Export successful deliveries with phone
+                                    numbers and API responses to Excel.</span>
+                            </div>
+
+                            <div style="margin-bottom: 0;">
+                                <strong style="display: block; color: #dc3545; font-size: 16px;">3. Delivery Failures
+                                    Log</strong>
+                                <span style="     margin-left: 1rem;
+font-size: 14px; color: #6c757d;">Export failed deliveries with phone
+                                    numbers, error codes, and API responses to Excel.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle;">
+                        <div
+                            style="padding: 10px; background-color:#ffffff; text-align:center; border-radius:16px; border:1px solid #e5e7eb; text-align: center;">
+                            <a href="https://www.youtube.com/watch?v=LNpQswwHMLM" target="_blank"
+                                style="text-decoration: none; display: block;">
+                                <img src="https://img.youtube.com/vi/LNpQswwHMLM/maxresdefault.jpg"
+                                    style="width: 100%; border-radius: 12px; display: block;" alt="Watch Bulk SMS Demo">
+
+                                <div style="margin-top: -150px; margin-bottom: 80px; display: table; width: 100%;">
+                                    <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                        <div
+                                            style="width: 80px; height: 80px; margin: 0 auto; background-color: #ff0000; border-radius: 50%; display: table; box-shadow: 0 8px 24px #999999;">
+                                            <div
+                                                style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 6px;">
+                                                <div
+                                                    style="width: 0; height: 0; border-left: 26px solid white; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin: 0 auto;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <p style="margin-top: 10px; color: #6b7280; font-size: 14px; font-weight: 600;">▶ Click to
+                                watch: Multiple SMS (Bulk Messaging) Demo</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                style="width: 100%; display: table; border-spacing: 20px 0; margin-bottom: 3rem; font-family:'Segoe UI', Roboto, sans-serif">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle;">
+                        <div
+                            style="padding: 10px; background-color:#ffffff; text-align:center; border-radius:16px; border:1px solid #e5e7eb; text-align: center; ">
+
+                            <a href="https://www.youtube.com/watch?v=ssuGK5bM0PM" target="_blank"
+                                style="text-decoration: none; display: block;">
+
+                                <img src="https://img.youtube.com/vi/ssuGK5bM0PM/maxresdefault.jpg"
+                                    style="width: 100%; border-radius: 12px; display: block;"
+                                    alt="Watch Smart Scheduling Demo">
+
+                                <div style="margin-top: -150px; margin-bottom: 80px; display: table; width: 100%;">
+                                    <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                        <div
+                                            style="width: 80px; height: 80px; margin: 0 auto; background-color: #ff0000; border-radius: 50%; display: table; box-shadow: 0 8px 24px #999999;">
+                                            <div
+                                                style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 6px;">
+                                                <div
+                                                    style="width: 0; height: 0; border-left: 26px solid white; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin: 0 auto;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <p
+                                style="margin-top: 10px; color: #6b7280; font-size: 14px; font-weight: 600; font-family:'Segoe UI', Roboto, sans-serif">
+                                ▶ Click to watch: Smart Scheduling Demo
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle; padding-left: 20px;">
+                        <h3
+                            style="color: #00A09D !important; font-weight: 700; font-size: 2rem; margin-bottom: 15px; margin-top: 0; font-family:'Segoe UI', Roboto, sans-serif">
+                            <span><img style="width: 3rem;" src="schedule.png" alt="schedule.png"></span> Smart
+                            Scheduling
+                        </h3>
+                        <p
+                            style="color: #374151; line-height: 1.6; margin-bottom: 20px; font-size: 1.4rem; font-family:'Segoe UI', Roboto, sans-serif">
+                            Schedule SMS campaigns in advance for single, multiple, and group messages - perfect for
+                            marketing campaigns and time-zone targeting.
+                        </p>
+
+                        <ul
+                            style="list-style: none !important; padding: 0; margin: 0; font-family:'Segoe UI', Roboto, sans-serif">
+                            <li
+                                style="list-style: none !important; padding-left: 16px; border-left: 3px solid #00A09D; margin-bottom: 10px; font-size: 1.2rem; color: #4b5563 !important; font-family:'Segoe UI', Roboto, sans-serif">
+                                <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                Plan marketing campaigns in advance
+                            </li>
+
+                            <li
+                                style="list-style: none !important; padding-left: 16px; border-left: 3px solid #00A09D; margin-bottom: 10px; font-size: 1.2rem; color: #4b5563 !important; font-family:'Segoe UI', Roboto, sans-serif">
+                                <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                Time-zone specific targeting
+                            </li>
+
+                            <li
+                                style="list-style: none !important; padding-left: 16px; border-left: 3px solid #00A09D; margin-bottom: 10px; font-size: 1.2rem; color: #4b5563 !important; font-family:'Segoe UI', Roboto, sans-serif">
+                                <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                Schedule for Single, Group, or Bulk lists
+                            </li>
+
+                            <li
+                                style="list-style: none !important; padding-left: 16px; border-left: 3px solid #00A09D; margin-bottom: 10px; font-size: 1.2rem; color: #4b5563 !important; font-family:'Segoe UI', Roboto, sans-serif">
+                                <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                View and manage queued messages
+                            </li>
+
+                            <li
+                                style="list-style: none !important; padding-left: 16px; border-left: 3px solid #00A09D; margin-bottom: 0; font-size: 1.2rem; color: #4b5563 !important; font-family:'Segoe UI', Roboto, sans-serif">
+                                <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                Automated background sending
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+           
+
+         
+
+            <div
+                style="width: 100%; display: table; border-spacing: 20px 0; margin-bottom: 3rem; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                <div style="display: table-row;">
+
+                    <div style="display: table-cell; width: 50%; vertical-align: top;">
+                        <h3
+                            style="color: #F22F46 !important; font-weight: 700; font-size: 2rem; margin-bottom: 10px; margin-top: 0; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                            <span><img style="width: 3rem;" src="group.png" alt="group"></span> Groups & Templates
+                        </h3>
+                        <p
+                            style="font-size: 1.5rem;  color: #374151; line-height: 1.6; margin-bottom: 25px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                            Manage your content and your contacts efficiently.
+                        </p>
+
+                        <ul
+                            style="list-style: none !important; padding: 0; margin: 0; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+
+                            <li style="list-style: none !important; display: table; width: 100%; margin-bottom: 20px;">
+                                <div style="display: table-row;">
+                                    <div
+                                        style="display: table-cell; width: 30px; vertical-align: top; padding-top: 2px;">
+                                        <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                    </div>
+                                    <div style="display: table-cell; vertical-align: top;">
+                                        <h6
+                                            style="font-weight: 700; color: #111827; margin: 0 0 5px 0; font-size: 17px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                                            SMS Groups
+                                        </h6>
+                                        <p
+                                            style="font-size: 16px; color: #6b7280; margin: 0; line-height: 1.5; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                                            Organize contacts into groups for targeted campaigns. Create unlimited
+                                            segments and export group data.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li style="list-style: none !important; display: table; width: 100%; margin-bottom: 0;">
+                                <div style="display: table-row;">
+                                    <div
+                                        style="display: table-cell; width: 30px; vertical-align: top; padding-top: 2px;">
+                                        <span style="color:#00A09D; font-weight:bold; margin-right:10px">✔</span>
+                                    </div>
+                                    <div style="display: table-cell; vertical-align: top;">
+                                        <h6
+                                            style="font-weight: 700; color: #111827; margin: 0 0 5px 0; font-size: 17px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                                            Template View
+                                        </h6>
+                                        <p
+                                            style="font-size: 16px; color: #6b7280; margin: 0; line-height: 1.5; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                                            Create, manage, and reuse SMS templates. Supports dynamic variables and
+                                            multi-language setups.
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div style="display: table-cell; width: 50%; vertical-align: middle;">
+                        <div
+                            style="padding: 10px; background-color: #ffffff; box-shadow: 0 10px 30px #dddddd; text-align: center; border-radius: 16px; border: 1px solid #e5e7eb;">
+                            <a href="https://www.youtube.com/watch?v=c1r4X-XDfB8" target="_blank"
+                                style="text-decoration: none; display: block;">
+
+                                <img src="https://img.youtube.com/vi/c1r4X-XDfB8/maxresdefault.jpg"
+                                    style="width: 100%; border-radius: 12px; display: block;"
+                                    alt="Watch Groups & Templates Demo">
+
+                                <div style="margin-top: -150px; margin-bottom: 80px; display: table; width: 100%;">
+                                    <div style="display: table-cell; vertical-align: middle; text-align: center;">
+                                        <div
+                                            style="width: 80px; height: 80px; margin: 0 auto; background-color: #ff0000; border-radius: 50%; display: table; box-shadow: 0 8px 24px #999999;">
+                                            <div
+                                                style="display: table-cell; vertical-align: middle; text-align: center; padding-left: 6px;">
+                                                <div
+                                                    style="width: 0; height: 0; border-left: 26px solid white; border-top: 16px solid transparent; border-bottom: 16px solid transparent; margin: 0 auto;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <p
+                                style="margin-top: 10px; color: #6b7280; font-size: 14px; font-weight: 600; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                                ▶ Click to watch: Groups & Templates Demo
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div style="padding: 0 1rem; margin-bottom: 3rem; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3
+                    style="font-size: 3rem;font-weight: 700; color: #111827 !important; margin-bottom: 10px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                    Comprehensive Logging System
+                </h3>
+                <p style="font-size: 1.3rem;color: #6b7280; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                    Unified History Menu with 3 distinct log categories.
+                </p>
+            </div>
+
+            <div style="display: table; width: 100%; border-spacing: 15px; margin-bottom: 10px;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 33.33%; background-color: #ffffff; padding: 20px; border-radius: 8px; 
+            border-left-width: 4px; border-left-style: solid; border-left-color: #6c757d; 
+            border-top: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; 
+            box-shadow: 0 2px 8px #eeeeee;">
+                        <strong
+                            style="display: block; color: #212529; font-size: 20px; margin-bottom: 5px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                            <img style="width: 2.5rem;" src="icon_single.png" alt=""> Single SMS Log
+                        </strong>
+                        <span
+                            style="font-size: 15px; color: #6c757d; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">History
+                            of individual messages with API response.</span>
+                    </div>
+                    <div
+                        style="display: table-cell; width: 33.33%; background-color: #ffffff; padding: 20px; border-radius: 8px; 
+            border-left-width: 4px; border-left-style: solid; border-left-color: #dc3545; 
+            border-top: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; 
+            box-shadow: 0 2px 8px #eeeeee;">
+                        <strong
+                            style="display: block; color: #F22F46 !important; font-size: 20px; margin-bottom: 5px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                            <img style="width: 2.5rem;" src="multiple_sms.png" alt="">
+                            Multiple SMS Log
+                        </strong>
+                        <span
+                            style="font-size: 15px; color: #6c757d; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">Bulk
+                            campaign details, success/failure rates.</span>
+                    </div>
+                    <div
+                        style="display: table-cell; width: 33.33%; background-color: #ffffff; padding: 20px; border-radius: 8px; border-left-width: 4px; border-left-style: solid; border-left-color: #0dcaf0; border-top: 1px solid #dee2e6; border-right: 1px solid #dee2e6; border-bottom: 1px solid #dee2e6; box-shadow: 0 2px 8px #eeeeee;">
+                        <strong
+                            style="display: block; color: #0dcaf0 !important; font-size: 20px; margin-bottom: 5px; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">
+                            <img style="width: 2.5rem;" src="group.png" alt=""> Group Log
+                        </strong>
+                        <span
+                            style="font-size: 15px; color: #6c757d; font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;">Group-based
+                            messaging stats & metrics.</span>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+    <div class="row"
+        style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); padding: 0rem 0; margin-left: -0.75rem; margin-right: -0.75rem;">
+
+
+        <!-- Step 1: Twilio Account Setup -->
+      <div style="width: 100%; font-family: 'Roboto', 'Segoe UI', sans-serif; background-color: #ffffff; color: #374151; line-height: 1.5;">
+
+    <div style="background-color: #f8f9fa; padding: 3rem 1rem; text-align: center; margin-bottom: 2rem; border-left: 1px solid #dee2e6; border-right: 1px solid #dee2e6;">
+        <div style="display: inline-block; padding: 8px 24px; background-color: #f1ecf0; border-radius: 50px; margin-bottom: 1rem;">
+            <span style="text-transform: uppercase; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; color: #714B67 !important;">Setup Guide</span>
+        </div>
+        <h2 style="font-weight: 700; margin-bottom: 1rem; font-size: 2.5rem; color: #111827 !important;">
+            <span style="margin-right: 12px;">🛠</span> Complete Installation & Setup
+        </h2>
+        <p style="color: #6b7280; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+            Follow these 4 simple steps to get your Twilio SMS Gateway fully operational
+        </p>
+    </div>
+
+    <div style="padding: 0 1rem; margin-bottom: 3rem;">
+        <div style="max-width: 1000px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px #eeeeee; padding: 2.5rem; border: 1px solid #e5e7eb;">
+            <div style="display: table; width: 100%; margin-bottom: 2rem;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 60px; vertical-align: middle;">
+                        <div style="width: 60px; height: 60px; background-color: #F22F46; border-radius: 16px; text-align: center; line-height: 60px; box-shadow: 0 8px 20px #f8c2c9;">
+                            <span style="color: white; font-weight: 700; font-size: 1.8rem;">1</span>
+                        </div>
+                    </div>
+                    <div style="display: table-cell; vertical-align: middle; padding-left: 1.5rem;">
+                        <h3 style="font-weight: 700; color: #F22F46 !important; font-size: 1.6rem; margin: 0;">Create & Configure Twilio Account</h3>
+                        <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Set up your Twilio messaging service</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #f1f1f1; display: table; width: 100%;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 36px; vertical-align: top;">
+                        <div style="width: 36px; height: 36px; background-color: #fcebed; border-radius: 10px; text-align: center; line-height: 36px;">
+                            <span style="color: #F22F46; font-weight: 700; font-size: 0.9rem;">1.1</span>
+                        </div>
+                    </div>
+                    <div style="display: table-cell; vertical-align: top; padding-left: 1rem;">
+                        <h5 style="font-weight: 700; color: #2d3748; margin: 0 0 10px 0;">Sign Up for Twilio</h5>
+                        <ul style="list-style: none !important; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 8px; font-size: 0.95rem;">
+                                <span style="color: #00A09D; font-weight: bold; margin-right: 8px;">✔</span> Visit <a href="https://www.twilio.com/try-twilio" target="_blank" style="color: #F22F46; font-weight: 700; text-decoration: none;">twilio.com/try-twilio</a>
+                            </li>
+                            <li style="margin-bottom: 8px; font-size: 0.95rem;">
+                                <span style="color: #00A09D; font-weight: bold; margin-right: 8px;">✔</span> Create a free trial account with <strong>$15.50 trial credit</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-bottom: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid #f1f1f1; display: table; width: 100%;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 36px; vertical-align: top;">
+                        <div style="width: 36px; height: 36px; background-color: #fcebed; border-radius: 10px; text-align: center; line-height: 36px;">
+                            <span style="color: #F22F46; font-weight: 700; font-size: 0.9rem;">1.2</span>
+                        </div>
+                    </div>
+                    <div style="display: table-cell; vertical-align: top; padding-left: 1rem;">
+                        <h5 style="font-weight: 700; color: #2d3748; margin: 0 0 10px 0;">Get Your Phone Number</h5>
+                        <ul style="list-style: none !important; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 8px; font-size: 0.95rem;">
+                                <span style="color: #00A09D; font-weight: bold; margin-right: 8px;">✔</span> Navigate to <strong>Phone Numbers → Manage → Buy a Number</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background-color: #fff5f5; padding: 1.5rem; border-radius: 12px; border-left-width: 4px; border-left-style: solid; border-left-color: #F22F46;">
+                <p style="font-weight: 700; color: #2d3748; margin-bottom: 1rem;">Required Credentials:</p>
+                <div style="display: table; width: 100%; border-spacing: 10px 0;">
+                    <div style="display: table-row;">
+                        <div style="display: table-cell; background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb; width: 33%; text-align: center;">
+                            <div style="font-size: 0.75rem; color: #6b7280;">Credential 1</div>
+                            <div style="font-weight: 700; color: #F22F46;">Account SID</div>
+                        </div>
+                        <div style="display: table-cell; background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb; width: 33%; text-align: center;">
+                            <div style="font-size: 0.75rem; color: #6b7280;">Credential 2</div>
+                            <div style="font-weight: 700; color: #F22F46;">Auth Token</div>
+                        </div>
+                        <div style="display: table-cell; background: white; padding: 1rem; border-radius: 8px; border: 1px solid #e5e7eb; width: 33%; text-align: center;">
+                            <div style="font-size: 0.75rem; color: #6b7280;">Credential 3</div>
+                            <div style="font-weight: 700; color: #F22F46;">Twilio Number</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 0 1rem; margin-bottom: 3rem;">
+        <div style="max-width: 1000px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px #eeeeee; padding: 2.5rem; border: 1px solid #e5e7eb;">
+            <div style="display: table; width: 100%; margin-bottom: 2rem;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 60px; vertical-align: middle;">
+                        <div style="width: 60px; height: 60px; background-color: #714B67; border-radius: 16px; text-align: center; line-height: 60px;">
+                            <span style="color: #ffffff; font-weight: 700; font-size: 1.8rem;">2</span>
+                        </div>
+                    </div>
+                    <div style="display: table-cell; vertical-align: middle; padding-left: 1.5rem;">
+                        <h3 style="font-weight: 700; color: #714B67 !important; font-size: 1.6rem; margin: 0;">Install Odoo Module</h3>
+                        <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Add SMS Gateway to your Odoo instance</p>
+                    </div>
+                </div>
+            </div>
+            <div style="display: table; width: 100%; border-spacing: 15px;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 50%; background: #f9fafb; padding: 1.25rem; border-radius: 12px; border: 2px solid #e5e7eb;">
+                        <strong style="display: block; color: #2d3748; margin-bottom: 5px;">Extract to Addons</strong>
+                        <code style="font-size: 12px; color: #6b7280;">/opt/odoo/addons/</code>
+                    </div>
+                    <div style="display: table-cell; width: 50%; background: #f9fafb; padding: 1.25rem; border-radius: 12px; border: 2px solid #e5e7eb;">
+                        <strong style="display: block; color: #2d3748; margin-bottom: 5px;">Restart Server</strong>
+                        <code style="font-size: 12px; color: #6b7280;">sudo systemctl restart odoo</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 0 1rem; margin-bottom: 3rem;">
+        <div style="max-width: 1000px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 10px 40px #eeeeee; padding: 2.5rem; border: 1px solid #e5e7eb;">
+            <div style="display: table; width: 100%; margin-bottom: 2rem;">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; width: 60px; vertical-align: middle;">
+                        <div style="width: 60px; height: 60px; background-color: #00A09D; border-radius: 16px; text-align: center; line-height: 60px;">
+                            <span style="color: #ffffff; font-weight: 700; font-size: 1.8rem;">3</span>
+                        </div>
+                    </div>
+                    <div style="display: table-cell; vertical-align: middle; padding-left: 1.5rem;">
+                        <h3 style="font-weight: 700; color: #00A09D !important; font-size: 1.6rem; margin: 0;">Configure Twilio Integration</h3>
+                        <p style="color: #6b7280; margin: 0; font-size: 0.9rem;">Connect your account with Odoo</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background: #f0fdfa; padding: 1rem; border-left-width: 4px; border-left-style: solid; border-left-color: #00A09D; border-radius: 8px; margin-bottom: 1rem;">
+                <strong style="font-size: 18px; color: #2d3748;">Path:</strong>
+                <span style="font-size: 18px; color: #4b5563;"> Twilio SMS → Configuration </span>
+            </div>
+        </div>
+    </div>
+
+
+   <div style="padding: 0 1rem; margin-bottom: 4rem; font-family: 'Roboto', 'Segoe UI', sans-serif;">
+    <div style="max-width: 1000px; margin: 0 auto; background-color: #10b981; padding: 3rem; border-radius: 20px; text-align: center; color: #ffffff !important; box-shadow: 0 20px 60px #dddddd;">
+        
+        <div style="width: 80px; height: 80px; background-color: #34c79a; border-radius: 20px; line-height: 80px; margin: 0 auto 1.5rem auto; border: 1px solid #ffffff;">
+            <span style="font-size: 2.5rem; font-weight: 700; color: #ffffff !important;">4</span>
+        </div>
+
+        <h2 style="font-size: 2.2rem; font-weight: 700; margin-bottom: 10px; color: #ffffff !important; font-family: 'Roboto', sans-serif;">
+            You're Ready to Send SMS! 🚀
+        </h2>
+        
+        <p style="font-size: 1.1rem; margin-bottom: 2.5rem; color: #ffffff !important; opacity: 0.95; font-family: 'Roboto', sans-serif;">
+            Your Twilio SMS Gateway is fully configured.
+        </p>
+        
+        <div style="display: table; width: 100%; border-spacing: 10px; border-collapse: separate;">
+            <div style="display: table-row;">
+                <div style="display: table-cell; background-color: #2dbf91; padding: 1rem; border-radius: 12px; font-weight: 700; border: 1px solid #ffffff; color: #ffffff !important; width: 33%;">
+                    Single SMS
+                </div>
+                <div style="display: table-cell; background-color: #2dbf91; padding: 1rem; border-radius: 12px; font-weight: 700; border: 1px solid #ffffff; color: #ffffff !important; width: 33%;">
+                    Bulk Import
+                </div>
+                <div style="display: table-cell; background-color: #2dbf91; padding: 1rem; border-radius: 12px; font-weight: 700; border: 1px solid #ffffff; color: #ffffff !important; width: 33%;">
+                    Smart Scheduling
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+    </div>
+
+
+    </div>
+    </div>
+
+</body>
+
+
+</html>

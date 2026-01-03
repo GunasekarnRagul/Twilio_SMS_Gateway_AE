@@ -1,0 +1,201 @@
+<odoo>
+
+    <!-- Tree View -->
+   <record id="view_twilio_sms_tree" model="ir.ui.view">
+    <field name="name">twilio.sms.tree</field>
+    <field name="model">twilio.sms</field>
+    <field name="arch" type="xml">
+        <list string="SMS History">
+            <field name="create_date"/>
+            <field name="recipient_type"/>
+            <field name="mobile_number_display" string="Mobile Number"/>
+            <field name="message_body"/>
+            
+            <field name="detailed_status" widget="badge"
+                   decoration-info="state == 'scheduled'" 
+                   decoration-success="state == 'sent'"
+                   decoration-warning="state == 'partial'"
+                   decoration-danger="state == 'failed'"/>
+                   
+            <field name="state" column_invisible="1"/> 
+        </list>
+    </field>
+</record>
+
+    <!-- Form View -->
+    <record id="view_twilio_sms_form" model="ir.ui.view">
+        <field name="name">twilio.sms.form</field>
+        <field name="model">twilio.sms</field>
+        <field name="arch" type="xml">
+            <form string="Compose SMS">
+                <header>
+                    <button name="action_send_sms"
+                            string="Send Now"
+                            type="object"
+                            class="btn-primary"
+                            icon="fa-paper-plane"
+                            invisible="state == 'sent'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <h1><i class="fa fa-commenting-o text-primary"/> Compose SMS</h1>
+                    </div>
+
+                    <group>
+                        <!-- RECIPIENT SECTION -->
+<group string="Recipients">
+    <field name="recipient_type" widget="radio" options="{'horizontal': true}"/>
+
+    <field name="recipient_single"
+           placeholder="Add your country code e.g. +1234567890"
+           invisible="recipient_type == 'multi'"
+           required="recipient_type == 'single'"/>
+
+    <label for="recipient_multi" invisible="recipient_type == 'single'"/>
+    <div class="o_row" invisible="recipient_type == 'single'">
+        <field name="recipient_multi"
+               placeholder="+1111111111, +2222222222"
+               style="width: 100%%"/>
+               
+        <button name="%(action_sms_import_wizard)d"
+                type="action"
+                string="Import Excel"
+                class="btn btn-link"
+                icon="fa-upload"/>
+    </div>
+</group>
+
+                        <!-- MESSAGE SECTION -->
+                        <group string="Content">
+                            <field name="message_body"
+                                   widget="text"
+                                   placeholder="Type your message here..."
+                                   style="min-height: 100px;"/>
+                        </group>
+
+                        <!-- SCHEDULE SECTION -->
+                        <group string="Schedule Options">
+                            <field name="schedule_datetime" placeholder='Select Date/Time'/>
+                            <field name="timezone"/>
+                        </group>
+                    </group>
+              <notebook invisible="state == 'draft'">
+                        <page string="Delivery Logs">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted">
+                                    <i class="fa fa-terminal"/> Execution Output
+                                </span>
+                                <button name="action_clear_log" 
+                                        string="Clear Logs" 
+                                        type="object" 
+                                        icon="fa-trash" 
+                                        class="btn btn-link text-danger" 
+                                        style="padding: 0; text-decoration: none;"
+                                        confirm="Are you sure you want to delete this log history?"/>
+                            </div>
+
+                            <field name="response_log" 
+                                   readonly="1" 
+                                   force_save="1" 
+                                   nolabel="1" 
+                                   widget="text" 
+                                   placeholder="Waiting for execution..."
+                                   style="font-family: 'Courier New', monospace; 
+                                          background-color: #f8f9fa; 
+                                          border: 1px solid #dee2e6; 
+                                          padding: 15px; 
+                                          border-radius: 4px; 
+                                          color: #495057; 
+                                          min-height: 200px; 
+                                          display: block;"/>
+                        </page>
+
+
+                        <page string="Delivery Success">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-success">
+                                    <i class="fa fa-check-circle"/> Success Output
+                                </span>
+                                <button name="action_export_success_excel" 
+                                        string="Export Excel" 
+                                        type="object" 
+                                        icon="fa-file-excel-o" 
+                                        class="btn btn-link text-success" 
+                                        style="padding: 0; text-decoration: none;"
+                                        invisible="not log_success"/>
+                            </div>
+
+                            <field name="log_success" 
+                                   readonly="1" 
+                                   force_save="1" 
+                                   nolabel="1" 
+                                   widget="text" 
+                                   placeholder="No successful deliveries."
+                                   style="font-family: 'Courier New', monospace; 
+                                          background-color: #f0fff4; 
+                                          border: 1px solid #c3e6cb; 
+                                          padding: 15px; 
+                                          border-radius: 4px; 
+                                          color: #155724; 
+                                          min-height: 200px; 
+                                          display: block;"/>
+                        </page>
+
+                        
+
+
+                        <page string="Delivery Failures">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"/> Failure Output
+                                </span>
+                                <button name="action_export_failure_excel" 
+                                        string="Export Excel" 
+                                        type="object" 
+                                        icon="fa-file-excel-o" 
+                                        class="btn btn-link text-danger" 
+                                        style="padding: 0; text-decoration: none;"
+                                        invisible="not log_failure"/>
+                            </div>
+                            
+
+
+                            <field name="log_failure" 
+                                   readonly="1" 
+                                   force_save="1" 
+                                   nolabel="1" 
+                                   widget="text" 
+                                   placeholder="No failures."
+                                   style="font-family: 'Courier New', monospace; 
+                                          background-color: #fff5f5; 
+                                          border: 1px solid #f5c6cb; 
+                                          padding: 15px; 
+                                          border-radius: 4px; 
+                                          color: #721c24; 
+                                          min-height: 200px; 
+                                          display: block;"/>
+                        </page>
+
+
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_twilio_sms_send" model="ir.actions.act_window">
+        <field name="name">Send SMS</field>
+        <field name="res_model">twilio.sms</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first SMS!
+            </p>
+        </field>
+    </record>
+
+</odoo>
