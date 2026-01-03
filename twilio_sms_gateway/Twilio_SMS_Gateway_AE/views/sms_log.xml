@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sms_log_search" model="ir.ui.view">
+        <field name="name">sms.log.search</field>
+        <field name="model">sms.log</field>
+        <field name="arch" type="xml">
+            <search string="Search Logs">
+                <field name="to_number" />
+                <field name="message_body" />
+                <field name="status" />
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}" />
+                    <filter string="Source" name="group_source"
+                        context="{'group_by': 'source_model'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_sms_log_tree" model="ir.ui.view">
+        <field name="name">sms.log.tree</field>
+        <field name="model">sms.log</field>
+        <field name="arch" type="xml">
+            <tree string="SMS History"
+                create="0"
+                edit="0"
+                delete="0">
+
+                <field name="create_date" string="Date" />
+
+                <field name="source_model" invisible="1" />
+
+                <field name="source_display" widget="badge" />
+
+                <field name="to_number_display" />
+                <field name="message_body" optional="show" />
+                <field name="api_response" optional="hide" />
+
+                <field name="status" widget="badge"
+                    decoration-success="status == 'sent'"
+                    decoration-info="status == 'scheduled'"
+                    decoration-muted="status == 'draft'"
+                    decoration-danger="status == 'failed'"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_clear_sms_logs_server" model="ir.actions.server">
+        <field name="name">Clear All History</field>
+        <field name="model_id" ref="model_sms_log" />
+        <field name="binding_model_id" ref="model_sms_log" />
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_delete_all_logs()
+        </field>
+    </record>
+
+    <record id="action_sms_log_viewer" model="ir.actions.act_window">
+        <field name="name">SMS Logs</field>
+        <field name="res_model">sms.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_sms_log_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No logs found.
+            </p>
+            <p>
+                Sent messages will appear here automatically.
+            </p>
+        </field>
+    </record>
+
+</odoo>

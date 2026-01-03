@@ -1,0 +1,135 @@
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_twilio_sms_tree" model="ir.ui.view">
+        <field name="name">twilio.sms.tree</field>
+        <field name="model">twilio.sms</field>
+        <field name="arch" type="xml">
+            <tree string="SMS History">
+                <field name="create_date" />
+                <field name="recipient_type" />
+                <field name="mobile_number_display" string="Mobile Number" />
+                <field name="message_body" />
+
+                <field name="detailed_status" widget="badge"
+                    decoration-info="state == 'scheduled'"
+                    decoration-success="state == 'sent'"
+                    decoration-warning="state == 'partial'"
+                    decoration-danger="state == 'failed'" />
+
+                <field name="state" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+<record id="view_twilio_sms_form" model="ir.ui.view">
+        <field name="name">twilio.sms.form</field>
+        <field name="model">twilio.sms</field>
+        <field name="arch" type="xml">
+            <form string="Compose SMS">
+                <header>
+                    <button name="action_send_sms"
+                            string="Send Now"
+                            type="object"
+                            class="oe_highlight"
+                            icon="fa-paper-plane"
+                            attrs="{'invisible': [('state', '=', 'sent')]}" />
+                    <field name="state" widget="statusbar" />
+                </header>
+
+                <sheet>
+                    <field name="log_success" invisible="1"/>
+                    <field name="log_failure" invisible="1"/>
+
+                    <div class="oe_title">
+                        <h1><i class="fa fa-commenting text-primary" /> New SMS</h1>
+                    </div>
+
+                    <group>
+                        <group string="To">
+                            <field name="recipient_type" widget="radio" options="{'horizontal': true}" />
+
+                            <field name="recipient_single"
+                                   placeholder="+1 (555) 010-9988"
+                                   attrs="{'invisible': [('recipient_type', '=', 'multi')], 'required': [('recipient_type', '=', 'single')]}" />
+
+                            <label for="recipient_multi" attrs="{'invisible': [('recipient_type', '=', 'single')]}"/>
+                            <div attrs="{'invisible': [('recipient_type', '=', 'single')]}">
+                                <field name="recipient_multi"
+                                       placeholder="+1555000001, +1555000002 (Comma separated)"
+                                       style="min-height: 80px; border: 1px solid #ccc; padding: 5px; border-radius: 4px;" />
+                                
+                                <div class="mt-2">
+                                    <button name="%(action_sms_import_wizard)d"
+                                            type="action"
+                                            string=" Upload Excel File"
+                                            class="btn btn-secondary btn-sm"
+                                            icon="fa-file-excel-o" />
+                                    <span class="text-muted ml-2"> or paste numbers above</span>
+                                </div>
+                            </div>
+                        </group>
+
+                        <group string="Options">
+                            <field name="schedule_datetime" />
+                            <field name="timezone" />
+                        </group>
+                    </group>
+
+                    <separator string="Message Content"/>
+                    <field name="message_body"
+                           widget="text"
+                           placeholder="Type your message here..."
+                           nolabel="1"
+                           style="min-height: 150px; font-size: 14px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" />
+
+                    <notebook attrs="{'invisible': [('state', '=', 'draft')]}">
+                        <page string="Delivery Logs">
+                             <field name="response_log" readonly="1" force_save="1" widget="text" />
+                        </page>
+
+                        <page string="Success Report">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-success"><i class="fa fa-check-circle"/> Delivery Successful</span>
+                                <button name="action_export_success_excel"
+                                        string="Download Report"
+                                        type="object"
+                                        icon="fa-download"
+                                        class="btn btn-link text-success"
+                                        attrs="{'invisible': [('log_success', '=', False)]}" />
+                            </div>
+                            <field name="log_success" readonly="1" force_save="1" nolabel="1" widget="text" />
+                        </page>
+
+                        <page string="Failure Report">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-danger"><i class="fa fa-exclamation-triangle"/> Delivery Failed</span>
+                                <button name="action_export_failure_excel"
+                                        string="Download Report"
+                                        type="object"
+                                        icon="fa-download"
+                                        class="btn btn-link text-danger"
+                                        attrs="{'invisible': [('log_failure', '=', False)]}" />
+                            </div>
+                            <field name="log_failure" readonly="1" force_save="1" nolabel="1" widget="text" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_twilio_sms_send" model="ir.actions.act_window">
+        <field name="name">Send SMS</field>
+        <field name="res_model">twilio.sms</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first SMS!
+            </p>
+        </field>
+    </record>
+
+</odoo>

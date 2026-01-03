@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_twilio_config_user,twilio.config user,model_twilio_config,base.group_user,1,0,0,0
+access_twilio_config_manager,twilio.config manager,model_twilio_config,sales_team.group_sale_manager,1,1,1,1
+access_twilio_config_admin,twilio.config admin,model_twilio_config,base.group_system,1,1,1,1
+access_twilio_sms,twilio.sms,model_twilio_sms,base.group_user,1,1,1,1
+access_twilio_whatsapp,twilio.whatsapp,model_twilio_whatsapp,base.group_user,1,1,1,1
+access_twilio_sms_template,twilio.sms.template,model_twilio_sms_template,base.group_user,1,1,1,1
+access_twilio_whatsapp_template,twilio.whatsapp.template,model_twilio_whatsapp_template,base.group_user,1,1,1,1
+access_twilio_sms_group,twilio.sms.group,model_twilio_sms_group,base.group_user,1,1,1,1
+access_sms_log,sms.log,model_sms_log,base.group_user,1,1,1,1
+access_stock_picking_sms_config,stock.picking.sms.config,model_stock_picking_sms_config,base.group_user,1,1,1,1
+access_sms_import_wizard,sms.import.wizard,model_sms_import_wizard,base.group_user,1,1,1,1
+access_sale_order_sms_config_user,sale.order.sms.config user,model_sale_order_sms_config,sales_team.group_sale_salesman,1,0,0,0
+access_sale_order_sms_config_manager,sale.order.sms.config manager,model_sale_order_sms_config,sales_team.group_sale_manager,1,1,1,1
+access_sms_log_sale_user,sms.log sale user,model_sms_log,sales_team.group_sale_salesman,1,0,0,0
+access_sms_log_sale_manager,sms.log sale manager,model_sms_log,sales_team.group_sale_manager,1,1,1,1
