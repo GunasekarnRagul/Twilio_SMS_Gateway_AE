@@ -10,11 +10,7 @@
               action="action_twilio_sms_send" 
               sequence="1"/>
 
-    <!-- <menuitem id="menu_twilio_send_whatsapp" 
-              name="WhatsApp Messages" 
-              parent="menu_twilio_operations" 
-              action="action_twilio_whatsapp_send" 
-              sequence="2"/> -->
+  
 
     <!-- Groups -->
     <menuitem id="menu_twilio_group" name="Groups" parent="menu_twilio_root" sequence="10"/>
@@ -36,28 +32,6 @@
               parent="menu_twilio_template" 
               action="action_twilio_sms_template" 
               sequence="1"/>
-
-    <!-- <menuitem id="menu_twilio_whatsapp_template" 
-              name="WhatsApp Template" 
-              parent="menu_twilio_template" 
-              action="action_twilio_whatsapp_template" 
-              sequence="2"/> -->
- 
-    <!-- automation -->
-    <!-- <menuitem id="menu_automation_sale_order" name="Cron Jobs" parent="menu_twilio_root" sequence="30"/> -->
-
-    <menuitem id="menu_sale_order" 
-              name="Sales Order" 
-              parent="sale.menu_sale_config" 
-              action="action_sale_order_sms_config_server" 
-              sequence="1"/>
-
-    <menuitem id="menu_stock_picking_sms" 
-              name="Delivery SMS" 
-              parent="stock.menu_stock_config_settings" 
-              action="action_stock_picking_sms_config_server" 
-              sequence="50"/>
-              
                      
 
      <!-- History -->
