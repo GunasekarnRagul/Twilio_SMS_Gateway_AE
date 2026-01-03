@@ -1,0 +1,81 @@
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_twilio_root" name="Twilio sms (AE)" web_icon="Twilio_SMS_Gateway,static/description/img/twilio_logo.png"/>
+    <!-- Operations -->
+    <menuitem id="menu_twilio_operations" name="Operations" parent="menu_twilio_root" sequence="10"/>
+
+    <menuitem id="menu_twilio_send_sms" 
+              name="Send SMS" 
+              parent="menu_twilio_operations" 
+              action="action_twilio_sms_send" 
+              sequence="1"/>
+
+    <!-- <menuitem id="menu_twilio_send_whatsapp" 
+              name="WhatsApp Messages" 
+              parent="menu_twilio_operations" 
+              action="action_twilio_whatsapp_send" 
+              sequence="2"/> -->
+
+    <!-- Groups -->
+    <menuitem id="menu_twilio_group" name="Groups" parent="menu_twilio_root" sequence="10"/>
+
+    <menuitem id="menu_twilio_sms_group" 
+              name="SMS Group" 
+              parent="menu_twilio_group" 
+              action="action_twilio_sms_group" 
+              sequence="1"/>
+
+              
+
+
+    <!-- Template Menu -->
+    <menuitem id="menu_twilio_template" name="Template View" parent="menu_twilio_root" sequence="20"/>
+
+    <menuitem id="menu_twilio_sms_template" 
+              name="SMS Template" 
+              parent="menu_twilio_template" 
+              action="action_twilio_sms_template" 
+              sequence="1"/>
+
+    <!-- <menuitem id="menu_twilio_whatsapp_template" 
+              name="WhatsApp Template" 
+              parent="menu_twilio_template" 
+              action="action_twilio_whatsapp_template" 
+              sequence="2"/> -->
+ 
+    <!-- automation -->
+    <!-- <menuitem id="menu_automation_sale_order" name="Cron Jobs" parent="menu_twilio_root" sequence="30"/> -->
+
+    <menuitem id="menu_sale_order" 
+              name="Sales Order" 
+              parent="sale.menu_sale_config" 
+              action="action_sale_order_sms_config_server" 
+              sequence="1"/>
+
+    <menuitem id="menu_stock_picking_sms" 
+              name="Delivery SMS" 
+              parent="stock.menu_stock_config_settings" 
+              action="action_stock_picking_sms_config_server" 
+              sequence="50"/>
+              
+                     
+
+     <!-- History -->
+    <menuitem id="menu_sms_log" name="History" parent="menu_twilio_root" sequence="40"/>
+
+    <menuitem id="menu_twilio_sms_log" 
+              name="SMS Logs" 
+              parent="menu_sms_log" 
+              action="action_sms_log_viewer" 
+              sequence="1"/>              
+
+
+    <!-- Configuration -->
+    <menuitem id="menu_twilio_configuration" name="Configuration" parent="menu_twilio_root" sequence="50"/>
+
+    <menuitem id="menu_twilio_settings" 
+              name="Settings" 
+              parent="menu_twilio_configuration" 
+              action="action_twilio_config_server" 
+              sequence="1"/>
+</odoo>

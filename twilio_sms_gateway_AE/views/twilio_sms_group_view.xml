@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_twilio_sms_group_form" model="ir.ui.view">
+        <field name="name">twilio.sms.group.form</field>
+        <field name="model">twilio.sms.group</field>
+        <field name="arch" type="xml">
+            <form string="SMS Group">
+                <header>
+                    <button name="action_send_now"
+                            string="Send SMS"
+                            type="object"
+                            class="oe_highlight"
+                            icon="fa-paper-plane"
+                            confirm="Send SMS to all group recipients?"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Gold Members"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="member_count" readonly="1"/>
+                    </group>
+
+<group>
+                        <group>
+                            <separator string="SMS Message"/>
+                            <field name="message_body_group"
+                                   nolabel="1"
+                                   colspan="2"
+                                   widget="text"
+                                   placeholder="Type your message here..."
+                                   style="min-height: 100px;"/>
+                        </group>
+
+                        <group>
+                            <separator string="Schedule"/>
+                            <field name="schedule_datetime" placeholder='Select Date/Time'/>
+                            <field name="timezone"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Recipients">
+                            <div class="alert alert-info" role="alert" invisible="recipient_ids">
+                                <i class="fa fa-info-circle"/>
+                                Add contacts below to include them in this SMS group.
+                            </div>
+                            <field name="recipient_ids">
+                                <tree string="Contacts">
+                                    <field name="name"/>
+                                    <field name="mobile"/>
+                                    <field name="email"/>
+                                    <field name="city" optional="hide"/>
+                                    <field name="country_id" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Delivery Logs">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-muted">
+                                    <i class="fa fa-info-circle"/> Execution history for this group
+                                </span>
+                                <button name="action_clear_log" 
+                                        string="Clear History" 
+                                        type="object" 
+                                        icon="fa-trash" 
+                                        class="btn btn-link text-danger"
+                                        confirm="Clear all logs?"/>
+                            </div>
+
+                            <field name="sms_log" 
+                                   nolabel="1" 
+                                   colspan="2" 
+                                   readonly="1" 
+                                   widget="text" 
+                                   placeholder="Waiting for action..."
+                                   style="font-family: 'Courier New', monospace; 
+                                          background-color: #f8f9fa; 
+                                          border: 1px solid #dee2e6; 
+                                          padding: 10px; 
+                                          border-radius: 5px; 
+                                          color: #495057; 
+                                          min-height: 150px; 
+                                          display: block;"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<record id="view_twilio_sms_group_tree" model="ir.ui.view">
+        <field name="name">twilio.sms.group.tree</field>
+        <field name="model">twilio.sms.group</field>
+        <field name="arch" type="xml">
+            <tree string="SMS Groups" 
+                  default_order="create_date desc"
+                 >
+
+                <field name="create_date" string="Created On" optional="show"/>
+                
+                <field name="name" string="Group Name" decoration-bf="1"/>
+                
+                <field name="member_count" string="Recipients" class="text-start"/>
+
+                <field name="message_body_group" string="Message" optional="show"/>
+
+                <field name="schedule_datetime" column_invisible="1"/>
+                <field name="schedule_display"/>
+
+                <field name="timezone" optional="hide"/>
+                
+                <field name="state" widget="badge" 
+                       decoration-success="state == 'sent'" 
+                       decoration-info="state == 'scheduled'" 
+                       decoration-muted="state == 'draft'" 
+                       decoration-danger="state == 'failed'"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_twilio_sms_group" model="ir.actions.act_window">
+        <field name="name">SMS Groups</field>
+        <field name="res_model">twilio.sms.group</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new SMS Group
+            </p>
+            <p>
+                Organize your contacts into groups to send bulk SMS easily.
+            </p>
+        </field>
+    </record>
+
+
+
+</odoo>
